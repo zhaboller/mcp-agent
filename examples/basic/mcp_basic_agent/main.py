@@ -35,7 +35,7 @@ settings = Settings(
         }
     ),
     openai=OpenAISettings(
-        api_key="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",
+        api_key="sk-my-openai-api-key",
         default_model="gpt-4o-mini",
     ),
     anthropic=AnthropicSettings(
@@ -125,13 +125,13 @@ async def example_usage():
 
             if input_type == "file":
                 logger.info(f"File contents ({user_input}): {result}")
-                print(f"\nFile Contents:\n{'-'*30}\n{result}")
+                print(f"\nFile Contents:\n{'-' * 30}\n{result}")
             else:
                 logger.info(f"First 2 paragraphs of {user_input}: {result}")
-                print(f"\nURL Content (first 2 paragraphs):\n{'-'*30}\n{result}")
+                print(f"\nURL Content (first 2 paragraphs):\n{'-' * 30}\n{result}")
 
             # Multi-turn conversation: summarize the content
-            print(f"\n{'='*50}")
+            print(f"\n{'=' * 50}")
             print("Generating summary...")
             print("=" * 50)
 
@@ -144,7 +144,7 @@ async def example_usage():
                 ),
             )
             logger.info(f"Content as a tweet: {result}")
-            print(f"Summary Tweet:\n{'-'*15}\n{result}")
+            print(f"Summary Tweet:\n{'-' * 15}\n{result}")
 
 
 if __name__ == "__main__":
