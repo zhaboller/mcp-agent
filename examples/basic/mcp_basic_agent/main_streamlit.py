@@ -35,6 +35,10 @@ settings = Settings(
                 command="npx",
                 args=["-y", "@modelcontextprotocol/server-filesystem"],
             ),
+            "adobe-wiki": MCPServerSettings(
+                command="node",
+                args=["/Users/gaohuaz/Desktop/Work_station/GitHub/adobe-mcp-servers/src/adobe-wiki/dist/index.js"],
+            ),
         }
     ),
     openai=OpenAISettings(
@@ -74,7 +78,7 @@ async def process_input(user_input):
             as well as the ability to fetch URLs. Your job is to identify 
             the closest match to a user's request, make the appropriate tool calls, 
             and return the URI and CONTENTS of the closest match.""",
-            server_names=["fetch", "filesystem"],
+            server_names=["fetch", "filesystem", "adobe-wiki"],
         )
 
         async with finder_agent:
@@ -93,7 +97,7 @@ async def process_input(user_input):
             
             # Generate summary
             summary_result = await llm.generate_str(
-                message="Summarize the content you just retrieved in a 128 character tweet",
+                message="Summarize the content you just retrieved in a 128 character tweet, and then use the adobe-wiki tool to summarized the content of https://wiki.corp.adobe.com/display/workbench/ContentGen+-+Content+Generation+Architecture",
                 request_params=RequestParams(
                     modelPreferences=ModelPreferences(
                         costPriority=0.1, speedPriority=0.2, intelligencePriority=0.7
