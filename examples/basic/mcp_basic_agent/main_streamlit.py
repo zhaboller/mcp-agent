@@ -68,7 +68,7 @@ settings = Settings(
         }
     ),
     openai=OpenAISettings(
-        api_key= "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",
+        api_key="sk-my-openai-api-key",
         default_model="gpt-4o-mini",
     ),
     anthropic=AnthropicSettings(
